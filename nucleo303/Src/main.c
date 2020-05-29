@@ -45,6 +45,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
+extern void initialise_monitor_handles(void);
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -57,6 +59,7 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+#if 0
 void SWO_Init(uint32_t portBits, uint32_t cpuCoreFreqHz) {
   uint32_t SWOSpeed = 64000; /* default 64k baud rate */
   uint32_t SWOPrescaler = (cpuCoreFreqHz / SWOSpeed) - 1; /* SWOSpeed in Hz, note that cpuCoreFreqHz is expected to be match the CPU core clock */
@@ -124,6 +127,10 @@ void SWO_PrintString(const char *s, uint8_t portNumber) {
     SWO_PrintChar(*s++, portNumber);
   }
 }
+#endif
+
+
+
 
 /* USER CODE END 0 */
 
@@ -157,10 +164,13 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  initialise_monitor_handles();
+
+#if 0
 #define CPU_CORE_FREQUENCY_HZ 120000000 /* CPU core frequency in Hz */
 
 SWO_Init(0x1, CPU_CORE_FREQUENCY_HZ);
-
+#endif
 
   int a = 0;
   /* USER CODE END 2 */
@@ -172,8 +182,8 @@ SWO_Init(0x1, CPU_CORE_FREQUENCY_HZ);
 	  a = a + 1;
 	  //HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
 	  HAL_Delay(1000);
-	  //printf("fwef\n");
-	  SWO_PrintString("hello world with SWO\r\n", 0);
+	  printf("fwef\n");
+//	  SWO_PrintString("hello world with SWO\r\n", 0);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
