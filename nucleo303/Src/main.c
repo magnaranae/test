@@ -165,7 +165,7 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   // semihosting not working
- //  initialise_monitor_handles();
+  initialise_monitor_handles();
 
 #if 0
 #define CPU_CORE_FREQUENCY_HZ 120000000 /* CPU core frequency in Hz */
