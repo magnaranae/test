@@ -164,7 +164,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  initialise_monitor_handles();
+  // semihosting not working
+ //  initialise_monitor_handles();
 
 #if 0
 #define CPU_CORE_FREQUENCY_HZ 120000000 /* CPU core frequency in Hz */
@@ -180,7 +181,7 @@ SWO_Init(0x1, CPU_CORE_FREQUENCY_HZ);
   while (1)
   {
 	  a = a + 1;
-	  //HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
 	  HAL_Delay(1000);
 	  printf("fwef\n");
 //	  SWO_PrintString("hello world with SWO\r\n", 0);
@@ -270,11 +271,22 @@ static void MX_USART2_UART_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : PB3 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
