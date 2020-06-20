@@ -244,3 +244,9 @@ Command-line arguments:  -data /home/abc/test/CUBEIDE_Workspace -os linux -ws gt
 
 !ENTRY org.eclipse.cdt.core 1 0 2020-06-20 18:06:41.661
 !MESSAGE Indexed 'nucleo303' (21 sources, 91 headers) in 11.3 sec: 7,113 declarations; 24,199 references; 2 unresolved inclusions; 97 syntax errors; 4,922 unresolved names (14%)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain 4 4 2020-06-20 18:16:50.667
+!MESSAGE Type or version is empty: ; 
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain 2 2 2020-06-20 18:16:50.667
+!MESSAGE Falling back to default toolchain
