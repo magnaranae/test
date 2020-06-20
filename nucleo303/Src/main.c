@@ -164,8 +164,13 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  // semihosting not working
-  initialise_monitor_handles();
+
+
+  // semihosting IS working  :-)
+  //uncomment line an run with:
+  // run.sh
+  // otherwise it goes into hardfault handler
+ // initialise_monitor_handles();
 
 #if 0
 #define CPU_CORE_FREQUENCY_HZ 120000000 /* CPU core frequency in Hz */
