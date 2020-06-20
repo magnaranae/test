@@ -170,7 +170,8 @@ int main(void)
   //uncomment line an run with:
   // run.sh
   // otherwise it goes into hardfault handler
- // initialise_monitor_handles();
+ //
+  initialise_monitor_handles();
 
 #if 0
 #define CPU_CORE_FREQUENCY_HZ 120000000 /* CPU core frequency in Hz */
@@ -188,7 +189,7 @@ SWO_Init(0x1, CPU_CORE_FREQUENCY_HZ);
 	  a = a + 1;
 	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
 	  HAL_Delay(1000);
-	  printf("----> HelloWorld!\n");
+	  printf("----> HelloWorld %d !\n", a);
 //	  SWO_PrintString("hello world with SWO\r\n", 0);
     /* USER CODE END WHILE */
 
