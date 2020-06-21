@@ -1,0 +1,6 @@
+13:20:11 **** Incremental Build of configuration Default for project nucleo303 ****
+make all 
+make: Nothing to be done for 'all'.
+
+13:20:11 Build Finished. 0 errors, 0 warnings. (took 696ms)
+

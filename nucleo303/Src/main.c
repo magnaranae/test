@@ -171,7 +171,7 @@ int main(void)
   // run.sh
   // otherwise it goes into hardfault handler
  //
-  initialise_monitor_handles();
+ // initialise_monitor_handles();
 
 #if 0
 #define CPU_CORE_FREQUENCY_HZ 120000000 /* CPU core frequency in Hz */
@@ -285,7 +285,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3|GPIO_PIN_4, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 
   /*Configure GPIO pin : PA12 */
   GPIO_InitStruct.Pin = GPIO_PIN_12;
