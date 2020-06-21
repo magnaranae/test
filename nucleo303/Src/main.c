@@ -362,6 +362,15 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    printf("Shortcut PB4 to PB5 !!\n\n");
+//  UNUSED(GPIO_Pin);
+}
+
+
+
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
