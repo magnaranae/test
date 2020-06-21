@@ -229,7 +229,7 @@ SWO_Init(0x1, CPU_CORE_FREQUENCY_HZ);
   while (1)
   {
 	  a = a + 1;
-	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+	//  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
 	  HAL_Delay(1000);
 	  printf("----> HelloWorld %d !\n", a);
 //	  SWO_PrintString("hello world with SWO\r\n", 0);
@@ -348,7 +348,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : PB5 */
   GPIO_InitStruct.Pin = GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
@@ -364,8 +364,9 @@ static void MX_GPIO_Init(void)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-    printf("Shortcut PB4 to PB5 !!\n\n");
-//  UNUSED(GPIO_Pin);
+  if(GPIO_Pin == GPIO_PIN_5){
+	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+  }
 }
 
 
@@ -388,9 +389,9 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
 	  a = a + 1;
-	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+//	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
 	  osDelay(1000);
-	  printf("----> HelloWorld %d !\n", a);
+	  printf("--c--> HelloWorld %d !\n", a);
   }
   /* USER CODE END 5 */ 
 }
