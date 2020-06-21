@@ -189,7 +189,7 @@ int main(void)
 SWO_Init(0x1, CPU_CORE_FREQUENCY_HZ);
 #endif
 
-  int a = 0;
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -225,6 +225,7 @@ SWO_Init(0x1, CPU_CORE_FREQUENCY_HZ);
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int a = 0;
   while (1)
   {
 	  a = a + 1;
@@ -374,9 +375,13 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
+  int a = 0;
   for(;;)
   {
-    osDelay(1);
+	  a = a + 1;
+	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+	  osDelay(1000);
+	  printf("----> HelloWorld %d !\n", a);
   }
   /* USER CODE END 5 */ 
 }
